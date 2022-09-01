@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            background-color: #efefef;
+            display: grid;
+            place-items: center;
+            min-height: 90vh;
+            line-height: 1.6;
+            font-weight: 500;
+            font-family: sans-serif;
+        }
+        .container {
+            min-width: 200px;
+            padding: 10px;
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, .25);
+            border-radius: 10px;
+        }
+        .container span {
+            font-weight: 900;
+        }
+        input[type=button] {
+            border: 0;
+            outline: 0;
+            padding: 20px;
+            margin: 6px;
+            background-color: #ccc;
+            border-radius: 100%;
+            font-size: 1.3em;
+            width: 65px;
+        }
+        input.reset {
+            background-color: red;
+            color: #efefef;
+        }
+        input[name=displayResault] {
+            width: 100%;
+            direction: rtl;
+            font-size: 1.6em;
+            line-height: 2.5;
+            border: 0;
+            outline: 0;
+            background-color: rgb(214, 214, 214);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form action="" method="" name="form">
+            <div class="display">
+                <input type="text" name="displayResault" id="displayResault" placeholder="0">
+            </div>
+            <input type="button" onclick="reset()" value="C" class="reset">
+            <span>JAVASCRIPT CACULATOR</span>
+            <div class="row">
+                <input type="button" name="ceil" value="ce" onclick="mathCalculator('ceil')">
+                <input type="button" name="ABS" value="|x|" onclick="mathCalculator('abs')">
+                <input type="button" name="sqrt" value="&radic;" onclick="mathCalculator('sqrt')">
+                <input type="button" name="floor" value="fl" onclick="mathCalculator('floor')">
+            </div>
+            <div class="row">
+                <input type="button" name="b9" value="9" onclick="addToCalculator(b9.value)">
+                <input type="button" name="b8" value="8" onclick="addToCalculator(b8.value)">
+                <input type="button" name="b7" value="7" onclick="addToCalculator(b7.value)">
+                <input type="button" name="plus" value="+" onclick="addToCalculator(plus.value)">
+            </div>
+            <div class="row">
+                <input type="button" name="b6" value="6" onclick="addToCalculator(b6.value)">
+                <input type="button" name="b5" value="5" onclick="addToCalculator(b5.value)">
+                <input type="button" name="b4" value="4" onclick="addToCalculator(b4.value)">
+                <input type="button" name="negative" value="-" onclick="addToCalculator(negative.value)">
+            </div>
+            <div class="row">
+                <input type="button" name="b3" value="3" onclick="addToCalculator(b3.value)">
+                <input type="button" name="b2" value="2" onclick="addToCalculator(b2.value)">
+                <input type="button" name="b1" value="1" onclick="addToCalculator(b1.value)">
+                <input type="button" name="mulb" value="*" onclick="addToCalculator(mulb.value)">
+            </div>
+            <div class="row">
+                <input type="button" name="b0" value="0" onclick="addToCalculator(b0.value)">
+                <input type="button" name="potb" value="." onclick="addToCalculator(potb.value)">
+                <input type="button" name="divb" value="/" onclick="addToCalculator(divb.value)">
+                <input type="button" name="equels" value="=" onclick="finilize()">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function addToCalculator(value) {
+            document.getElementById('displayResault').value += value;
+        }
+        function finilize() {
+            document.getElementById('displayResault').value = eval(document.getElementById('displayResault').value);
+        }
+        function reset() {
+            document.getElementById('displayResault').value += ' ';
+        }
+        function mathCalculator(mathFunc) {
+            var val = document.getElementById('displayResault').value;
+            document.getElementById('displayResault').value = Math[mathFunc](val);
+        }
+    </script>
+</body>
+</html>
